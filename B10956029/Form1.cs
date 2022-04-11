@@ -41,7 +41,7 @@ namespace B10956029
             while (true)
             {
                 byte[] B = U.Receive(ref EP);
-                string A = Encoding.Default.GetString(B);
+                string A = Encoding.Default.GetString(B);//翻譯鎮列為字串A
                 string[] Q = A.Split('/');
                 Point[] R = new Point[Q.Length];
 
