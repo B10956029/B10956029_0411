@@ -51,7 +51,7 @@ namespace B10956029
                     R[i].X = int.Parse(k[0]);
                     R[i].Y = int.Parse(k[1]);
                 }
-                for (int i=0; i < Q.Length; i++)
+                for (int i=0; i < Q.Length-1; i++)
                 {
                     LineShape L = new LineShape();
                     L.StartPoint = R[i];
@@ -65,7 +65,12 @@ namespace B10956029
         {
             try 
             {
+                Th = new Thread(Listen);//建立監聽執行續，目標副程序-->Listen
+                Th.Start();//啟動監聽執行續
                 Th.Abort();//關閉監聽執行續
+
+                int Port = int.Parse(textBox_listenPort.Text);
+                U = new UdpClient(Port);
                 U.Close();//關閉監聽器
             }
             catch
